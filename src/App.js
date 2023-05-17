@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Nav from './components/Nav';
 import Main from './pages/MainPage';
-import ItemList from './pages/ItemListPage';
+import Product from './pages/ProductPage';
 import Bookmark from './pages/BookmarkPage';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Nav></Nav>
       <Routes>
-        <Route path="/" element={<Main items={items}/>}></Route>
-        <Route path="/products/list" element={<ItemList />}></Route>
+        <Route path="/" element={<Main items={items} />}></Route>
+        <Route path="/products/list" element={<Product />}></Route>
         <Route path="/bookmark" element={<Bookmark />}></Route>
       </Routes>
       <footer className="footer">
