@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Close from './Vector.png';
 
 const Item = ({ data }) => {
   const { title, sub_title, brand_name, discountPercentage, price, image_url, brand_image_url, follower } = data;
@@ -27,13 +28,13 @@ const Item = ({ data }) => {
       </div>
       {show ? (
         <div
-          className="image-modal"
-          onClick={() => {
-            setShow(false);
-          }}
+          className="image-modal"  
         >
           <div className="image-modal-box">
             <img src={image_url ? image_url : brand_image_url} alt='img' />
+            <div className='close' onClick={() => { setShow(false) }}>
+              <img src={Close} alt='img'></img>
+            </div>
           </div>
         </div>
       ) : null}
