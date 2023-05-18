@@ -8,7 +8,7 @@ import category from '../components/product-category.png';
 import exhibition from '../components/product-plan.png';
 import product from '../components/product-product.png';
 
-function ItemList({ items, type, setType, isBookmark }) {
+function ItemList({ items, type, setType, alreadyLiked }) {
   if (!items) {
     return null;
   }
@@ -47,7 +47,7 @@ function ItemList({ items, type, setType, isBookmark }) {
             return null;
           }
 
-          return <Item data={d} isBookmark={isBookmark} />;
+          return <Item data={d} alreadyLiked={alreadyLiked} />;
         })}
       </div>
     </div>
