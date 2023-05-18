@@ -211,7 +211,6 @@ a {
 }
 
 .star-item {
-  color: yellow;
   transform: translate(0, -150%);
   position: absolute;
 }
@@ -232,10 +231,6 @@ a {
 
 .star-modal {
   display: flex;
-}
-
-.liked {
-  color: red;
 }
 
 .percent-text {
