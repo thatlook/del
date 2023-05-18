@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
-const Star = ({ className, isBookmark }) => {
-  const [liked, setLiked] = useState(isBookmark);
+import { Star, StarBorder } from '@mui/icons-material';
+
+const StarComponent = ({ className, alreadyLiked }) => {
+  const [liked, setLiked] = useState(alreadyLiked);
+
   return (
     <div
       className={`${className} ${liked ? 'liked' : ''}`}
@@ -15,4 +18,4 @@ const Star = ({ className, isBookmark }) => {
     </div>
   );
 };
-export default Star;
+export default StarComponent;

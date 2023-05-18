@@ -5,7 +5,7 @@ import Close from './Vector.png';
 
 // todo: use modal
 
-const Item = ({ data, isBookmark }) => {
+const Item = ({ data, alreadyLiked }) => {
   const {
     title,
     sub_title,
@@ -31,7 +31,7 @@ const Item = ({ data, isBookmark }) => {
         >
           <div className="item-box-upper-area">
             <img src={image_url ? image_url : brand_image_url} alt="img" />
-            <Star className={'star-item' + (isBookmark ? ' liked' : '')} />
+            <Star className={'star-item'} alreadyLiked={alreadyLiked} />
           </div>
         </div>
 
@@ -63,7 +63,7 @@ const Item = ({ data, isBookmark }) => {
                 <img src={Close} alt="img"></img>
               </div>
               <div className="star-modal-area-text">
-                <Star className={'star-modal'} isBookmark={isBookmark} />
+                <Star className={'star-modal'} alreadyLiked={alreadyLiked} />
                 <span className="">{realTitle}</span>
               </div>
             </div>

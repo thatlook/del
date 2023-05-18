@@ -1322,7 +1322,7 @@ const BookmarkPage = () => {
     });
   }, []);
 
-  return <ItemList items={items} type={type} setType={setType} isBookmark />;
+  return <ItemList items={items} type={type} setType={setType} alreadyLiked />;
 };
 
 export default BookmarkPage;
