@@ -23,14 +23,15 @@ const Item = ({ data, alreadyLiked }) => {
   return (
     <>
       <div className="item-box">
-        <div
-          className="item-box-upper"
-          onClick={() => {
-            setShow(true);
-          }}
-        >
+        <div className="item-box-upper">
           <div className="item-box-upper-area">
-            <img src={image_url ? image_url : brand_image_url} alt="img" />
+            <img
+              src={image_url ? image_url : brand_image_url}
+              alt="img"
+              onClick={() => {
+                setShow(true);
+              }}
+            />
             <Star className={'star-item'} alreadyLiked={alreadyLiked} />
           </div>
         </div>
