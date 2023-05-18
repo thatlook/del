@@ -9,7 +9,10 @@ function Nav() {
         <nav>
             <Link to="/"><img id="logo" src="../로고.png" alt="logo"></img></Link>
             <h1>COZ Shopping</h1>
-            <MenuRoundedIcon id='hamburger-icon' onClick={() => setIsOpen(!isOpen)}></MenuRoundedIcon>
+            <MenuRoundedIcon id='hamburger-icon' onClick={() => {
+                setIsOpen(!isOpen)
+                }}
+            />
             {isOpen ? (
                 <ul className='menu'>
                     <li className='menu-item'>OOO님, 안녕하세요!</li>

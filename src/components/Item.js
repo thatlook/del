@@ -18,21 +18,25 @@ const Item = ({ data }) => {
 
   return (
     <>
-      <div className="item">
-        <img className='item-img' src={image_url ? image_url : brand_image_url} alt="img"
-          onClick={() => {
-            setShow(true);
-          }}
-        />
-        <BookmarkItem className={'img-star'} />
-        <div className="item-title">
+      <div className="item-box">
+        <div className='item-box-upper'>
+          <img src={image_url ? image_url : brand_image_url} alt="img"
+            onClick={() => {
+              setShow(true);
+            }}
+          />
+          <BookmarkItem className={'img-star'} />
+        </div>
+      </div>
+      <div className='item-box-lower'>
+        <div className="item-box-title">
           <div>{type === 'Category' ? `# ${title}` : title || brand_name}</div>
           {discountPercentage ? <div className='percent'>{`${discountPercentage}%`}</div> : null}
           {follower ? <div>관심고객수</div> : null}
         </div>
         <div className="item-box-percent">{price ? `${price}원` : follower}</div>
         <div className="item-box-subtitle">{sub_title}</div>
-      </div >
+      </div>
       {show ? (
         <div className="image-modal" >
           <div className="image-modal-box">
@@ -47,7 +51,7 @@ const Item = ({ data }) => {
             <div className='image-modal-title'>{title ? title : brand_name}</div>
             <BookmarkItem className={'modal-star'} />
           </div>
-        </div >
+        </div>
       ) : null}
     </>
   );
