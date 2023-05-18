@@ -6,16 +6,18 @@ const StarComponent = ({ className, alreadyLiked }) => {
   const [liked, setLiked] = useState(alreadyLiked);
 
   return (
-    <div
-      className={`${className} ${liked ? 'liked' : ''}`}
-      onClick={() => {
-        // todo: show snackbar
-        alert('hi');
-        setLiked(!liked);
-      }}
-    >
-      star
-    </div>
+    <>
+      <div
+        className={className}
+        onClick={() => {
+          // todo: show snackbar
+          alert('hi');
+          setLiked(!liked);
+        }}
+      >
+        {liked ? <Star /> : <StarBorder />}
+      </div>
+    </>
   );
 };
 export default StarComponent;
