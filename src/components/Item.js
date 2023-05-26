@@ -1,7 +1,35 @@
 import React, { useState } from 'react';
-import BookmarkItem from './BookmarkItem';
-import Close from '../assets/Vector.png';
-// import { Star } from '@mui/icons-material';
+import styled from 'styled-components';
+
+import ModalImage from './ModalImage';
+import StarButton from './StarButton';
+
+const ItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 264px;
+`;
+const ItemTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+`;
+
+const ItemImage = styled.img`
+  border-radius: 12px;
+  width: 264px;
+  height: 210px;
+  object-fit: cover;
+`;
+const ItemPrice = styled.div`
+  text-align: right;
+`;
+const Percent = styled.div`
+  color: blue;
+`;
+const StarSection = styled.div`
+  transform: translate(0, -150%);
+`;
 
 const Item = ({ data }) => {
   const {
@@ -13,42 +41,39 @@ const Item = ({ data }) => {
     price,
     image_url,
     brand_image_url,
-    follower,
+    follower
   } = data;
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <div className="item">
-        <img className='item-img' src={image_url ? image_url : brand_image_url} alt="img"
+      <ItemWrapper>
+        <ItemImage
+          src={image_url ? image_url : brand_image_url}
+          alt="img"
           onClick={() => {
             setShow(true);
           }}
         />
-        <div><BookmarkItem className='item-img-star' /></div>
-        <div className="item-title">
+        <StarSection>
+          <StarButton />
+        </StarSection>
+        <ItemTitle>
           <div>{type === 'Category' ? `# ${title}` : title || brand_name}</div>
-          {discountPercentage ? <div className='percent'>{`${discountPercentage}%`}</div> : null}
+          {discountPercentage ? (
+            <Percent>{`${discountPercentage}%`}</Percent>
+          ) : null}
           {follower ? <div>관심고객수</div> : null}
-        </div>
-        <div className="item-price">{price ? `${price}원` : follower}</div>
-        <div className="item-subtitle">{sub_title}</div>
-      </div>
+        </ItemTitle>
+        <ItemPrice>{price ? `${price}원` : follower}</ItemPrice>
+        <div>{sub_title}</div>
+      </ItemWrapper>
       {show ? (
-        <div className="image-modal" >
-          <div className="image-modal-box">
-            <img src={image_url ? image_url : brand_image_url} alt='img' />
-            <div className='close'>
-              <img src={Close} alt='img'
-                onClick={() => {
-                  setShow(false);
-                }}
-              />
-            </div>
-            <div className='image-modal-title'>{title ? title : brand_name}</div>
-            <BookmarkItem className={'modal-star'} />
-          </div>
-        </div>
+        <ModalImage
+          image={image_url ? image_url : brand_image_url}
+          setShow={setShow}
+          title={title ? title : brand_name}
+        />
       ) : null}
     </>
   );
