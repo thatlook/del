@@ -7,7 +7,7 @@ function Nav() {
 
     return (
         <nav>
-            <Link to="/"><img id="logo" src="../로고.png" alt="logo"></img></Link>
+            <Link to="/"><img id="logo" src="../로고.png" alt="logo" /></Link>
             <h1>COZ Shopping</h1>
             <MenuRoundedIcon id='hamburger-icon' onClick={() => {
                 setIsOpen(!isOpen)

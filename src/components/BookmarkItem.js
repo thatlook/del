@@ -3,6 +3,7 @@ import { Star, StarBorder } from '@mui/icons-material'
 
 function BookmarkItem({ className }) {
     const [bookmarked, setBookmarked] = useState(false)
+
     return (
         <>
             <div className={className}

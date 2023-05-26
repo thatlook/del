@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Item from '../components/Item';
 
 import all from '../assets/product-all.png';
@@ -6,25 +6,13 @@ import product from '../assets/product-product.png';
 import category from '../assets/product-category.png';
 import exhibition from '../assets/product-plan.png';
 import brand from '../assets/product-brand.png';
+import useFetch from '../hooks/useFetch';
 
 const Product = () => {
-    const [items, setItems] = useState([]);
+    const [productItems] = useFetch('http://cozshopping.codestates-seb.link/api/v1/products');
     const [type, setType] = useState('all');
-  
-    useEffect(() => {
-      const getData = async () => {
-        const data = await fetch(
-          'http://cozshopping.codestates-seb.link/api/v1/products'
-        ).then(resp => resp.json());
-        return data;
-      };
-  
-      getData().then(d => {
-        setItems(d);
-      });
-    }, []);
 
-    if (!items) {
+    if (!productItems) {
         return null;
     }
 
@@ -58,7 +46,7 @@ const Product = () => {
             ))}
           </div>
           <div className="product-boxes">
-            {items.map(d => {
+            {productItems.map(d => {
               if (type !== 'all' && d.type !== type) {
                 return null;
               }
